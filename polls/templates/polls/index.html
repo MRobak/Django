@@ -1,0 +1,12 @@
+<font size="5"><b>Choose the top hits from:</font></b>
+{% if latest_toplist_list %}
+    <font size="4">
+    <ul style ="list-style-type: square">
+    {% for toplist in latest_toplist_list %}
+        <li><a href="{% url 'polls:detail' toplist.id %}">{{ toplist.toplist_name }}</a></li>
+    {% endfor %}
+    </ul>
+    </font>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

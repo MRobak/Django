@@ -1,0 +1,10 @@
+<font size="5"><b>Vote for the song:</font></b>
+
+
+<ul>
+{% for song in toplist.song_set.all %}
+    <li>{{ song.song_title }} - {{ song.votes }} vote{{ song.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' toplist.id %}">Vote again?</a>

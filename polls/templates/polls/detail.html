@@ -1,0 +1,12 @@
+<font size="5"><b>Vote for the song:</font></b>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' toplist.id %}" method="post">
+{% csrf_token %}
+{% for song in toplist.song_set.all %}
+    <input type="radio" name="song" id="song{{ forloop.counter }}" value="{{ song.id }}" />
+    <label for="song{{ forloop.counter }}">{{ song.song_title }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
